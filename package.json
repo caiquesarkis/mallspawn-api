@@ -1,0 +1,19 @@
+{
+  "name": "mallspawn-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiquesarkis/mallspawn-api.git"
+  },
+  "author": "Caique Sarkis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiquesarkis/mallspawn-api/issues"
+  },
+  "homepage": "https://github.com/caiquesarkis/mallspawn-api#readme"
+}
