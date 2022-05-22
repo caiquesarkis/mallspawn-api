@@ -1,17 +1,24 @@
 GET http://localhost:3000/products/?caique=5
 
-
 ### 
-
 POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "name": "Socks",
-    "description": "You can use it in your foot",
-    "category": "clothes",
+    "name": "Teclado Mecânico",
+    "description": "It's for typing stuff",
+    "category": "eletronics",
     "status": true,
     "price": 20,
     "compareAtPrice": 30,
-    "images": ["kkk", "kakaka"]
+    "images": ["kkk.jpeg", "kakaka.png"]
+}
+
+### 
+POST http://localhost:3000/stores
+Content-Type: application/json
+
+{
+    "Store_Name": "Mechdevil",
+    "Owner": "Caique Sarkis"
 }

@@ -1,7 +1,6 @@
 import express from "express"
 import mysql from 'mysql2';
 import 'dotenv/config'
-import { stat } from "fs";
 
 
 const app = express()
@@ -41,19 +40,36 @@ app.get('/products', (req, res) => {
 })
 
 
+// POST
+
+app.post('/stores',(req, res)=>{
+  const {Store_Name, Owner} = req.body
+  const query = `INSERT INTO stores (Store_Name, Owner) VALUES ("${Store_Name}", "${Owner}")`
+  connection.query(query,(err, result)=>{
+    if(err){
+      res.send(err)
+    }else{
+      res.send("Loja cadastrada com sucesso!")
+    }
+  })
+})
 
 app.post('/products', (req,res)=>{
-  let store = 'Multithings';
-  
+  let store = 'Mechdevil';
   const {name, description, category, status, price, compareAtPrice, images} = req.body
-  const query = `INSERT INTO products (Store_Name, Name, Description, Category, IsActive, Price, CompareAtPrice, Images) VALUES ("${store}", "${name}", "${description}", "${category}", ${status}, "${price}", "${compareAtPrice}", '["kakak","kaka"]');`
-  connection.query(query, (err, results, fields) => {
-      res.send(err + query)
+  const query = `INSERT INTO products (Store_Name, Name, Description, Category, IsActive, Price, CompareAtPrice, Images) VALUES ("${store}", "${name}", "${description}", "${category}", ${status}, "${price}", "${compareAtPrice}", '${JSON.stringify(images)}');`
+
+  connection.query(query, (err) => {
+      if(err){
+        res.send(err)
+      }else{
+        res.send("Produto cadastrado com sucesso!")
+      }
     }
   );
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`API is running on port ${port}`)
 })
 
