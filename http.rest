@@ -1,0 +1,17 @@
+GET http://localhost:3000/products/?caique=5
+
+
+### 
+
+POST http://localhost:3000/products/add
+Content-Type: application/json
+
+{
+    "name": "Socks",
+    "description": "You can use it in your foot",
+    "category": "clothes",
+    "status": true,
+    "price": 20,
+    "compareAtPrice": 30,
+    "images": ["https://myimage.com/image.jpg"]
+}
