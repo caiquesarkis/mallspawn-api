@@ -13,6 +13,6 @@ CREATE TABLE Products (
     IsActive bool,
     Price float(9,2),
     CompareAtPrice float(9,2),
-    Images json
+    Images JSON
 );
 

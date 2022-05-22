@@ -3,7 +3,7 @@ GET http://localhost:3000/products/?caique=5
 
 ### 
 
-POST http://localhost:3000/products/add
+POST http://localhost:3000/products
 Content-Type: application/json
 
 {
@@ -13,5 +13,5 @@ Content-Type: application/json
     "status": true,
     "price": 20,
     "compareAtPrice": 30,
-    "images": ["https://myimage.com/image.jpg"]
+    "images": ["kkk", "kakaka"]
 }
