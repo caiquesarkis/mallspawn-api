@@ -1,22 +1,22 @@
 import express from "express"
+import mysql from 'mysql2';
+import 'dotenv/config'
+
+
 const app = express()
 const port = 3000
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-// get the client
-import mysql from 'mysql2';
 
-// create the connection to database
 const connection = mysql.createConnection({
   host: 'localhost',
-  password: "33416738aA!",
+  password: process.env.DB_PASSWORD,
   user: 'root',
   database: 'mallspawn'
 });
 
-// simple query
 
 
 
