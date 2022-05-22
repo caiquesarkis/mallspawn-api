@@ -1,0 +1,18 @@
+CREATE TABLE Stores (
+    Store_Name varchar(255) PRIMARY KEY, 
+    Owner varchar(255)
+);
+
+CREATE TABLE Products (
+    Product_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Store_Name varchar(255),
+    FOREIGN KEY (Store_Name) REFERENCES Stores(Store_Name),
+    Name varchar(255),
+    Description varchar(2000),
+    Category varchar(255),
+    IsActive bool,
+    Price float(9,2),
+    CompareAtPrice float(9,2),
+    Images json
+);
+
