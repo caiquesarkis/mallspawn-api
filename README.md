@@ -1,4 +1,4 @@
-# Mallspawn
+# Mallspawn-api
 Mallspawn is an e-commerce prototyping API. Its main focus is to provide beginners with a basic API for creating personal study projects around e-commerce.
 
 ## Objetivo e Princípios
@@ -7,10 +7,10 @@ Construir um cms focado em prototipação de ecommerces.
 
 ## Brainstorm
 ### Funcionalidades do cms
-Cadastro de produtos
-Coleções
-Seção de artigos(Blog, dúvidas, etc) Seção focada em adicionar conteúdo de texto sem precisar adicionar no código
-Configurações gerais da loja
+- cadastro de produtos
+- coleções
+- seção de artigos(Blog, dúvidas, etc) Seção focada em adicionar conteúdo de texto sem precisar adicionar no código
+- configurações gerais da loja
 
 ## Talvez
 - Dashboard
