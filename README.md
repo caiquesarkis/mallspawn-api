@@ -25,29 +25,29 @@ Construir um cms focado em prototipação de ecommerces.
 		- [x] Botão: Adicionar produto
 		- [x] Filtro de pesquisa(Search bar por enquanto)
 		- [x] Lista de produtos
-	- [ ] Desenvolver api CRUD para produtos com banco de dados
-		- [x] Configuração inicial da api e criação do respositório
-		- [x] Planejamento da database para criação de loja e cadastro de produtos
-		- [x] Integração da database com a api
-		- [x] Criação das tabelas do planejamento em SQL
-		- [x] Interação dos endpoints com a database
-		- [ ] API Endpoints
-			- [x] GET
-				- [x] Shop Owners
-				- [x] Stores
-				- [x] Products
-			- [x] POST
-				- [x] Create new account
-				- [x] Login
-				- [x] Logout
-				- [x] Create store
-				- [x] Add product
-			- [ ] DELETE
-				- [ ] Products
-				- [ ] Shop Owners
-				- [ ] Stores
-			- [ ] PUT
-				- [ ] Products
+- [ ] Desenvolver api CRUD para produtos com banco de dados
+	- [x] Configuração inicial da api e criação do respositório
+	- [x] Planejamento da database para criação de loja e cadastro de produtos
+	- [x] Integração da database com a api
+	- [x] Criação das tabelas do planejamento em SQL
+	- [x] Interação dos endpoints com a database
+	- [ ] API Endpoints
+		- [x] GET
+			- [x] Shop Owners
+			- [x] Stores
+			- [x] Products
+		- [x] POST
+			- [x] Create new account
+			- [x] Login
+			- [x] Logout
+			- [x] Create store
+			- [x] Add product
+		- [ ] DELETE
+			- [ ] Products
+			- [ ] Shop Owners
+			- [ ] Stores
+		- [ ] PUT
+			- [ ] Products
 	- [ ] Hostear api em cloud
 	- [ ] Implementar sistema de autenticação com o Passaport.js
 	- [ ] Implementar e integrar design a api
