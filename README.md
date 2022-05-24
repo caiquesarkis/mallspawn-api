@@ -67,6 +67,6 @@ Construir um cms focado em prototipação de ecommerces.
 - [SQL Cheat Sheet](https://devhints.io/mysql)
 - [Authentication](https://www.passportjs.org/)
 - [Typescript setup](https://blog.appsignal.com/2022/01/19/how-to-set-up-a-nodejs-project-with-typescript.html)
-
+- [Basic login system with express](https://codeshack.io/basic-login-system-nodejs-express-mysql/)
 
 #### 2022_05_21
