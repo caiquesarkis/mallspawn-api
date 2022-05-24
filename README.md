@@ -31,6 +31,23 @@ Construir um cms focado em prototipação de ecommerces.
 		- [x] Integração da database com a api
 		- [x] Criação das tabelas do planejamento em SQL
 		- [x] Interação dos endpoints com a database
+		- [ ] API Endpoints
+			- [x] GET
+				- [x] Shop Owners
+				- [x] Stores
+				- [x] Products
+			- [x] POST
+				- [x] Create new account
+				- [x] Login
+				- [x] Logout
+				- [x] Create store
+				- [x] Add product
+			- [ ] DELETE
+				- [ ] Products
+				- [ ] Shop Owners
+				- [ ] Stores
+			- [ ] PUT
+				- [ ] Products
 	- [ ] Hostear api em cloud
 	- [ ] Implementar sistema de autenticação com o Passaport.js
 	- [ ] Implementar e integrar design a api
@@ -39,7 +56,7 @@ Construir um cms focado em prototipação de ecommerces.
 	- [ ] Design da página de configuração geral da loja
 	- [ ] Implementação das novas rotas para configuração da loja na api
 	- [ ] Implementar e integrar design a api
-	- [ ] Escrever documentação 
+	- [ ] Escrever documentação  
 
 ## Resorces
 **Links and notes that contribute to this project**
