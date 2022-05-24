@@ -1,6 +1,12 @@
+CREATE TABLE ShopOwners (
+    Owner_Username varchar(255) PRIMARY KEY, 
+    Password varchar(255)
+);
+
 CREATE TABLE Stores (
     Store_Name varchar(255) PRIMARY KEY, 
-    Owner varchar(255)
+    Owner_Username varchar(255),
+    FOREIGN KEY (Owner) REFERENCES ShopOwners(Username),
 );
 
 CREATE TABLE Products (

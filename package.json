@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "server": "ts-node src/main.ts"
+    "server": "ts-node src/main.ts",
+    "db": "ts-node src/db.ts"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,11 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "@types/express-session": "^1.17.4",
     "@types/mysql": "^2.15.21",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "mysql2": "^2.3.3"
   }
 }

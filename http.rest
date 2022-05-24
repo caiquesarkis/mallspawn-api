@@ -1,6 +1,13 @@
-GET http://localhost:3000/products/?caique=5
+### Shop Owners
+GET http://localhost:3000/shop_owners
 
-### 
+### Stores
+GET http://localhost:3000/localhost:3000/stores
+
+### Products
+GET http://localhost:3000/products
+
+###  Add New Product
 POST http://localhost:3000/products
 Content-Type: application/json
 
@@ -14,11 +21,32 @@ Content-Type: application/json
     "images": ["kkk.jpeg", "kakaka.png"]
 }
 
-### 
-POST http://localhost:3000/stores
+### Create new account 
+POST http://localhost:3000/new_owner
 Content-Type: application/json
 
 {
-    "Store_Name": "Mechdevil",
-    "Owner": "Caique Sarkis"
+    "owner_username": "Caique Sarkis",
+    "owner_password": "33416738aA!"
+}
+
+
+### Login
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "username": "Caique Sarkis",
+    "password": "33416738aA!"
+}
+
+### Logout
+POST http://localhost:3000/logout
+
+### Create Store
+POST http://localhost:3000/add_store
+Content-Type: application/json
+
+{
+    "store_name": "Mechdevil"
 }
