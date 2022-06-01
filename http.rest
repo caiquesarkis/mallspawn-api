@@ -8,7 +8,7 @@ GET http://localhost:3000/localhost:3000/stores
 GET http://localhost:3000/products
 
 ###  Add New Product
-POST http://localhost:3000/products
+POST http://localhost:3000/add_product
 Content-Type: application/json
 
 {

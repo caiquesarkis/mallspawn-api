@@ -23,7 +23,8 @@ async function createDB() {
   await runQuery(`
     CREATE TABLE shop_owners (
       owner_username varchar(255) PRIMARY KEY, 
-      owner_password varchar(255)
+      owner_password varchar(255),
+      owner_salt varchar(255)
     );
   `)
   await runQuery(`
@@ -64,12 +65,13 @@ rl.question(`Create or Delete DB? [C/D]`, (choice:string) => {
   switch (choice){
     case "C":
       createDB()
+      console.log("Database was created successfully")
       break
     case "D":
       deleteDB()
+      console.log("Database was deleted successfully")
       break
   }
-  rl.close();
 });
 
 

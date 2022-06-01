@@ -3,6 +3,7 @@ import mysql from 'mysql2';
 import 'dotenv/config';
 import session from 'express-session';
 import path from 'path';
+import crypto from 'crypto';
 
 const app = express()
 const port = process.env.API_PORT || 5000
@@ -20,6 +21,7 @@ declare module 'express-session' {
   interface SessionData {
     username: string;
     password: string;
+    salt: string;
     loggedIn: boolean;
   }
 }
@@ -64,9 +66,23 @@ app.get('/shop_owners', (req, res) => {
 
 // Registry
 
+function generateSalt() {
+    return crypto.randomBytes(16).toString("hex");
+}
+
+function HashPassword(password: string, salt: string) {
+  const hashFunction = crypto.createHmac("sha256", salt)
+  const hashedPassword = hashFunction.update(password).digest("hex")
+  return hashedPassword
+}
+
 app.post('/new_owner', (req, res)=>{
   const {owner_username, owner_password} = req.body
-  const query = `INSERT INTO shop_owners (owner_username, owner_password) VALUES ("${owner_username}", "${owner_password}")`
+
+  const salt = generateSalt()
+  const hashedPassword = HashPassword(owner_password, salt)
+
+  const query = `INSERT INTO shop_owners (owner_username, owner_password, owner_salt) VALUES ("${owner_username}", "${hashedPassword}", "${salt}");`
   connection.query(query, (err) => {
       if(err){
         res.send(err)
@@ -80,15 +96,15 @@ app.post('/new_owner', (req, res)=>{
 // login
 app.post('/auth',(req, res)=>{
   const {username, password} = req.body
-  console.log(req.body)
   if (username && password && !req.session.username) {
-		connection.query(`SELECT * FROM shop_owners WHERE owner_username = "${username}" AND owner_password = "${password}"`, (err, results)=> {
+		connection.query(`SELECT * FROM shop_owners WHERE owner_username = "${username}";`, (err, results)=> {
 			if (err){
         res.send("User couldn't login.")
         throw err;
       }else{
         const owner = JSON.parse(JSON.stringify(results))[0];
-        if((owner) && (username == owner.owner_username) && (password == owner.owner_password)){
+        const hashedPassword = HashPassword(password, owner.owner_salt)
+        if((owner) && (username == owner.owner_username) && ( hashedPassword == owner.owner_password)){
           req.session.username = username;
           req.session.password = password;
           req.session.loggedIn = true;
@@ -120,7 +136,6 @@ app.post('/add_store', (req, res)=>{
     connection.query(`SELECT * FROM stores WHERE store_name = "${store_name}"`, (err, results)=>{
       if(err) throw err;
       const store = JSON.parse(JSON.stringify(results))[0];
-      console.log(store)
       if((store) && (store_name == store.store_name)){
         res.send("Store name already taken.")
       }else{
@@ -144,19 +159,24 @@ app.post('/add_store', (req, res)=>{
 })
 
 
-app.post('/products', (req,res)=>{
-  const store = 'Mechdevil';
-  const {name, description, category, status, price, compareAtPrice, images} = req.body
-  const query = `INSERT INTO products (Store_Name, Name, Description, Category, IsActive, Price, CompareAtPrice, Images) VALUES ("${store}", "${name}", "${description}", "${category}", ${status}, "${price}", "${compareAtPrice}", '${JSON.stringify(images)}');`
+app.post('/add_product', (req,res)=>{
+  if(!req.session.loggedIn){
+    res.send("User not logged in.")
+  }else{
+    const store = 'Mechdevil';
+    const {name, description, category, status, price, compareAtPrice, images} = req.body
+    const query = `INSERT INTO products (store_name, name, description, category, is_active, price, compare_at_price, images) VALUES ("${store}", "${name}", "${description}", "${category}", ${status}, "${price}", "${compareAtPrice}", '${JSON.stringify(images)}');`
 
-  connection.query(query, (err) => {
-      if(err){
-        res.send(err)
-      }else{
-        res.send("Produto cadastrado com sucesso!")
+    connection.query(query, (err) => {
+        if(err){
+          // Add more especific error handling
+          res.send(err)
+        }else{
+          res.send("Produto cadastrado com sucesso!")
+        }
       }
-    }
-  );
+    );
+  }
 })
 
 app.listen(port, () => {
